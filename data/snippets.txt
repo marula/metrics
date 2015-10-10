@@ -1,0 +1,12 @@
+// Get repositories
+RepositoryService repoService = new RepositoryService(client);
+for (Repository repo : repoService.getRepositories("marula"))
+    System.out.println(repo.getName());
+
+// Get file info
+RepositoryId yumee = new RepositoryId("marula", "yumee-web");
+ContentsService contentsService = new ContentsService(client);
+List<RepositoryContents> repoContents = contentsService.getContents(yumee, "README.md");
+for (RepositoryContents contents : repoContents) {
+    System.out.println(contents.getSha());
+}
