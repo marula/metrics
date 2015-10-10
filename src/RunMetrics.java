@@ -6,9 +6,9 @@ public class RunMetrics {
         // Read Username and Password
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter username:");
-        String username = "Rick-KLN"; // sc.nextLine();
+        String username = sc.nextLine();
         System.out.println("Enter password:");
-        String password = "71307130b"; // sc.nextLine();
+        String password = sc.nextLine();
         sc.close();
 
         GitHubAPI API = new GitHubAPI(username, password, "marula", "yumee-web");

@@ -2,7 +2,7 @@ public class Revision {
     private String contents;
     private String author;
 
-   public Revision(String contents, String author) {
+   public Revision(String author, String contents) {
        this.contents = contents;
        this.author = author;
    }

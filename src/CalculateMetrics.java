@@ -63,10 +63,10 @@ public class CalculateMetrics {
     public ArrayList<VisualObject> calculateVisualObjects(ArrayList<Revision> revisions) {
         ArrayList<VisualObject> visualObjects = new ArrayList<>();
         for (Revision revision : revisions) {
+            //System.out.println(revision.getContents());
             Scanner sc = new Scanner(revision.getContents());
             while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-                int lineNumber = lookupLine(filePath, line);
+                int lineNumber = lookupLine(filePath, sc.nextLine());
                 if (lineNumber != -1) {
                     if (author.equals(revision.getAuthor())) {
                         visualObjects.add(new VisualObject(lineNumber, 0, 0, 0, true, 0, -1));
@@ -87,8 +87,11 @@ public class CalculateMetrics {
             Scanner sc = new Scanner(file);
             int lineNumber = 0;
             while (sc.hasNextLine()) {
+                String line = sc.nextLine();
                 lineNumber ++;
-                if (sc.nextLine().contains(revisionLine)) {
+                //System.out.println("File line: " + line);
+                //System.out.println("Revision line: " + revisionLine);
+                if (line.contains(revisionLine)) {
                     sc.close();
                     return lineNumber;
                 }
